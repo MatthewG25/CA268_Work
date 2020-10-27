@@ -1,21 +1,34 @@
 #!/usr/bin/env python3
 
-from Stack import Stack
-
+class Stack(object):
+    def __init__(self):
+        self.l = []
+    def push(self, e):
+        self.l.append(e)
+    def pop(self):
+        return self.l.pop()
+    def top(self):
+        return self.l[-1]
+    def is_empty(self):
+        return len(self.l) == 0
+    def __len__(self):
+        return len(self.l)
 
 def check_brackets(line):
     left = '({['
     right = ')}]'
     
     left_stack = Stack()
-    right_stack = Stack()
     
     for word in line:
         if word in left:
             left_stack.push(word)
         elif word in right:
-            right_stack.push(word)
-    if len(left_stack) == len(right_stack):
+            if left_stack.is_empty() == True:
+                return False
+            else:
+                left_stack.pop()
+    if left_stack.is_empty() == True:
         return True
     else:
         return False

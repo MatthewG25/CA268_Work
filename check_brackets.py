@@ -2,14 +2,16 @@ def check_brackets(line):
     left = '({['
     right = ')}]'
     
-    S = stack()
+    left_stack = stack()
+    right_stack = stack()
     
     for word in line:
         if word in left:
-            S.push(word)
+            left_stack.push(word)
         elif word in right:
-            if S.isEmpty():
-                return False
-            if right.index(word) != left.index(S.pop()):
-                return False
-    return S.isEmpty()
+            right_stack.push(word)
+    if len(left_stack) == len(right_stack):
+        return True
+    else:
+        return False
+    

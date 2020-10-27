@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+
+from Stack import Stack
+
+
 def check_brackets(line):
     left = '({['
     right = ')}]'

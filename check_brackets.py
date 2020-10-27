@@ -2,8 +2,8 @@ def check_brackets(line):
     left = '({['
     right = ')}]'
     
-    left_stack = stack()
-    right_stack = stack()
+    left_stack = Stack()
+    right_stack = Stack()
     
     for word in line:
         if word in left:
